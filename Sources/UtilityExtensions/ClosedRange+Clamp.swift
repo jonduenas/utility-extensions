@@ -9,6 +9,14 @@ import Foundation
 
 extension ClosedRange {
     func clamp(value: Bound) -> Bound {
-        return lowerBound > value ? lowerBound : (upperBound < value ? upperBound : value)
+        return lowerBound > value ? lowerBound
+        : upperBound < value ? upperBound
+        : value
+    }
+}
+
+extension Comparable {
+    func clamped(to limits: ClosedRange<Self>) -> Self {
+        return limits.clamp(value: self)
     }
 }

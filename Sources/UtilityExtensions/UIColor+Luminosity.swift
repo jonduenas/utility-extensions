@@ -10,19 +10,6 @@ import UIKit
 // Fantastic explanation of how it works
 // http://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/
 fileprivate extension CGFloat {
-    /// clamp the supplied value between a min and max
-    /// - Parameter min: The min value
-    /// - Parameter max: The max value
-    func clamp(min: CGFloat, max: CGFloat) -> CGFloat {
-        if self < min {
-            return min
-        } else if self > max {
-            return max
-        } else {
-            return self
-        }
-    }
-
     /// If color value is less than 1, add 1 to it. If temp color value is greater than 1, subtract 1 from it
     func convertToColorChannel() -> CGFloat {
         let min: CGFloat = 0
@@ -67,9 +54,9 @@ public extension UIColor {
         var blue = coreColor.blue
         let alpha = coreColor.alpha
 
-        red = red.clamp(min: 0, max: 1)
-        green = green.clamp(min: 0, max: 1)
-        blue = blue.clamp(min: 0, max: 1)
+        red = red.clamped(to: 0...1)
+        green = green.clamped(to: 0...1)
+        blue = blue.clamped(to: 0...1)
 
         // Luminosity
         guard let minRGB = [red, green, blue].min(),
