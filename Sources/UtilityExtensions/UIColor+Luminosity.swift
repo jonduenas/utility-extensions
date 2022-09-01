@@ -58,6 +58,7 @@ public extension UIColor {
     /// Returns self if unable to convert. All color values are clamped between 0 and 1 values, so extended
     /// RGB color spaces are not supported.
     /// - Parameter newLuminosity: New luminosity, between 0 and 1 (percentage)
+    /// - Returns: If convertible, the new UIColor. If not, returns self.
     func withLuminosity(_ newLuminosity: CGFloat) -> UIColor {
         // Convert RGB to HSL
         let coreColor = CIColor(color: self)
@@ -133,7 +134,23 @@ public extension UIColor {
         return UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: alpha)
     }
 
-    func darker(by percent: CGFloat = 0.25) -> UIColor {
+    /// Converts the UIColor to HSLA, sets the Luminance darker, then converts back to RGBA.
+    /// Returns self if unable to convert. All color values are clamped between 0 and 1 values, so extended
+    /// RGB color spaces are not supported.
+    /// - Parameter percent: The percent value (between 0 and 1) to darken the current Luminance.
+    /// Defaults to 0.1.
+    /// - Returns: If convertible, the new UIColor. If not, returns self.
+    func darker(by percent: CGFloat = 0.1) -> UIColor {
         return self.withLuminosity(0.5 - percent)
+    }
+
+    /// Converts the UIColor to HSLA, sets the Luminance lighter, then converts back to RGBA.
+    /// Returns self if unable to convert. All color values are clamped between 0 and 1 values, so extended
+    /// RGB color spaces are not supported.
+    /// - Parameter percent: The percent value (between 0 and 1) to lighten the current Luminance.
+    /// Defaults to 0.1.
+    /// - Returns: If convertible, the new UIColor. If not, returns self.
+    func lighter(by percent: CGFloat = 0.1) -> UIColor {
+        return self.withLuminosity(0.5 + percent)
     }
 }
