@@ -1,3 +1,3 @@
 # UtilityExtensions
 
-A description of this package.
+Various utility extensions.
