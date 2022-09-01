@@ -1,5 +1,5 @@
 //
-//  UIColor.swift
+//  UIColor+ConvenienceInits.swift
 //  
 //
 //  Created by Jon Duenas on 8/31/22.
@@ -53,6 +53,11 @@ public extension UIColor {
 
     /// Takes 8 Bit RGB values from 0-255 instead of CGFloat percentages
     convenience init(red8Bit: Int, green8Bit: Int, blue8Bit: Int, alpha: CGFloat = 1.0) {
-        self.init(red: CGFloat(red8Bit) / 255, green: CGFloat(green8Bit) / 255, blue: CGFloat(blue8Bit) / 255, alpha: alpha)
+        self.init(
+            red: CGFloat(red8Bit) / 255,
+            green: CGFloat(green8Bit) / 255,
+            blue: CGFloat(blue8Bit) / 255,
+            alpha: alpha
+        )
     }
 }

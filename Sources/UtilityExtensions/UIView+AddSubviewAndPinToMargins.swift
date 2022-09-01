@@ -1,5 +1,5 @@
 //
-//  UIView.swift
+//  UIView+AddSubviewAndPinToMargins.swift
 //  
 //
 //  Created by Jon Duenas on 9/1/22.
@@ -8,7 +8,7 @@
 import UIKit
 
 public extension UIView {
-    /// Adds a subview with new leading, trailing, top, and bottom constraints relative to the view's margins.
+    /// Adds a subview to view with new leading, trailing, top, and bottom constraints relative to the view's margins.
     func addSubviewAndPinToMargins(
         _ view: UIView,
         leading: Double = 0,

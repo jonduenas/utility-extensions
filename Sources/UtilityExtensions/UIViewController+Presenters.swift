@@ -1,5 +1,5 @@
 //
-//  UIViewController.swift
+//  UIViewController+Presenters.swift
 //  
 //
 //  Created by Jon Duenas on 9/1/22.
@@ -48,7 +48,8 @@ public extension UIViewController {
         present(safariVC, animated: animated, completion: completion)
     }
 
-    /// Creates a `UITapGestureRecognizer` with the view controller's root view as the target that calls the action `endEditing(_:)`.
+    /// Creates a `UITapGestureRecognizer` with the view controller's root view as the target that
+    /// calls the action `endEditing(_:)`.
     func setupHideKeyboardOnTap() {
         let tapRecognizer = UITapGestureRecognizer(
             target: view,

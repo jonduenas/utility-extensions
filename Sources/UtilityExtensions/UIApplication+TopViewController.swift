@@ -1,29 +1,23 @@
 //
-//  UIApplication.swift
+//  UIApplication+TopViewController.swift
 //  
 //
-//  Created by Jon Duenas on 8/31/22.
+//  Created by Jon Duenas on 9/1/22.
 //
 
 import UIKit
 
 public extension UIApplication {
     @available(iOS 13.0, *)
-    var foregroundActiveScene: UIWindowScene? {
+    var topWindow: UIWindow? {
         connectedScenes
-            .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
-    }
-
-    @available(iOS 13.0, *)
-    static var topWindow: UIWindow? {
-        UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
             .flatMap { $0.windows }
             .first(where: \.isKeyWindow)
     }
 
     @available(iOS 13.0, *)
-    static func topViewController(controller: UIViewController? = topWindow?.rootViewController) -> UIViewController? {
+    func topViewController(controller: UIViewController? = UIApplication.shared.topWindow?.rootViewController) -> UIViewController? {
         if let navigationController = controller as? UINavigationController {
             return topViewController(controller: navigationController.visibleViewController)
         }
@@ -38,3 +32,4 @@ public extension UIApplication {
         return controller
     }
 }
+
