@@ -18,7 +18,7 @@ extension View {
         _ condition: @autoclosure () -> Bool,
         transform: (Self) -> Content
     ) -> some View {
-        if condition {
+        if condition() {
             transform(self)
         } else {
             self
