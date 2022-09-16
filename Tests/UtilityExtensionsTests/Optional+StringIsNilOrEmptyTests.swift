@@ -29,4 +29,25 @@ class Optional_StringIsNilOrEmptyTests: XCTestCase {
 
         XCTAssertTrue(isNilOrEmpty)
     }
+
+    func test_unwrappedNotEmpty_validString() {
+        let optionalString: String? = "Test"
+        let unwrapped = optionalString.unwrappedNotEmpty(or: "Default")
+
+        XCTAssertEqual(unwrapped, "Test")
+    }
+
+    func test_unwrappedNotEmpty_nilString() {
+        let optionalString: String? = nil
+        let unwrapped = optionalString.unwrappedNotEmpty(or: "Default")
+
+        XCTAssertEqual(unwrapped, "Default")
+    }
+
+    func test_unwrappedNotEmpty_emptyString() {
+        let optionalString: String? = ""
+        let unwrapped = optionalString.unwrappedNotEmpty(or: "Default")
+
+        XCTAssertEqual(unwrapped, "Default")
+    }
 }

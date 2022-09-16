@@ -15,4 +15,17 @@ public extension Optional where Wrapped == String {
             return str.isEmpty
         }
     }
+
+    func unwrappedNotEmpty(or defaultString: String) -> String {
+        switch self {
+        case .none:
+            return defaultString
+        case .some(let string):
+            if string.isEmpty {
+                return defaultString
+            } else {
+                return string
+            }
+        }
+    }
 }
